@@ -2,22 +2,18 @@ package com.example.myapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toolbar
-import com.example.myapplication.dao.MyDatabase
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import kotlinx.android.synthetic.main.view_fragment.*
 
 class MainActivity : AppCompatActivity() {
-
-    private var mAdapter = MyAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        recyclerView.adapter = mAdapter
-        setData()
-    }
-    private fun setData() {
-        val dao = MyDatabase.getInstance(this).dictionaryDao()
-        mAdapter.models = dao.getAllDictionary()
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        val navController = navHostFragment.navController
+        bottomNav.setupWithNavController(navController)
     }
 }

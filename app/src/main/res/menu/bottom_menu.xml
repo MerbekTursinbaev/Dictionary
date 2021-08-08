@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item
+        android:id="@+id/viewFragment"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Bas bet" />
+
+    <item
+        android:id="@+id/notes"
+        android:icon="@drawable/ic_baseline_bookmark_24"
+        android:title="Saylandi" />
+
+
 </menu>
