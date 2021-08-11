@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/viewFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/viewFragment"
-        android:name="com.example.myapplication.fragment.ViewFragment"
-        android:label="ViewFragment" />
+        android:id="@+id/homeFragment"
+        android:name="com.example.myapplication.fragment.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
 
     <fragment
-        android:id="@+id/notes"
-        android:name="com.example.myapplication.Notes"
-        android:label="Notes" />
+        android:id="@+id/favoriteFragment"
+        android:name="com.example.myapplication.fragment.FavoriteFragment"
+        android:label="FavoriteFragment" />
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.myapplication.fragment.DetailFragment"
+        android:label="DetailFragment" >
+        <argument
+            android:name="description"
+            app:argType="string" />
+    </fragment>
+
 </navigation>

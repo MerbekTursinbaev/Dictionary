@@ -11,9 +11,17 @@ import kotlinx.android.synthetic.main.item_view.view.*
 class MyAdapter : RecyclerView.Adapter<MyAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun populateModel(user : User) {
+        fun populateModel(user: User) {
             itemView.tvName.text = user.name
+            itemView.setOnClickListener {
+                onClick.invoke(user)
+            }
         }
+    }
+
+    private var onClick: (user: User) -> Unit = {}
+    fun setOnItemClickListener(onClick: (user: User) -> Unit) {
+        this.onClick = onClick
     }
 
     var models: List<User> = listOf()
@@ -24,7 +32,7 @@ class MyAdapter : RecyclerView.Adapter<MyAdapter.ViewHolder>() {
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view =  LayoutInflater.from(parent.context).inflate(R.layout.item_view,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_view, parent, false)
         return ViewHolder(view)
     }
 
