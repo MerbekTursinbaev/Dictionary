@@ -12,6 +12,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.example.myapplication.R
 import com.example.myapplication.dao.MyDao
+import com.example.myapplication.dao.MyDatabase
 import com.example.myapplication.dao.User
 import kotlinx.android.synthetic.main.fragment_detail.*
 
@@ -28,7 +29,11 @@ class DetailFragment: Fragment(R.layout.fragment_detail) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
 
+        dao = MyDatabase.getInstance(requireContext()).dictionaryDao()
+
         description.text = args.description
+        // args.id
+        user = dao.getUserById( args.id )
 
         back.setOnClickListener {
             requireActivity().onBackPressed()

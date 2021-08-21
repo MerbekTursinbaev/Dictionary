@@ -12,8 +12,11 @@ interface MyDao {
     @Query("SELECT * FROM Dictionary WHERE name like :s")
     fun searchByWord(s: String) : List<User>
 
-    @Query("SELECT * FROM Dictionary WHERE isFavorite=:id")
+    @Query("SELECT * FROM Dictionary WHERE isFavorite = :id")
     fun getByIsFavorite( id: Int ) : List<User>
+
+    @Query("SELECT * FROM Dictionary WHERE id = :id ")
+    fun getUserById(id: Int)
 
     @Update
     fun update(user: User)

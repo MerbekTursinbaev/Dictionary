@@ -9,5 +9,5 @@ data class User(
     var id: Int,
     var name: String,
     var description: String,
-    var isFavorite: Int?
+    var isFavorite: Int? = 0
 )

@@ -31,8 +31,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         setData()
 
         adapter.setOnItemClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(it.description)
-            navController.navigate(action)
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(it.description,it.id)
+            navController.navigate(action
         }
 
         searchView.addTextChangedListener {
