@@ -8,20 +8,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.dao.User
 import kotlinx.android.synthetic.main.item_view.view.*
 
-class MyAdapter : RecyclerView.Adapter<MyAdapter.ViewHolder>() {
+class IsSelectedAdapter : RecyclerView.Adapter<IsSelectedAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun populateModel(user: User) {
             itemView.tvName.text = user.name
             itemView.setOnClickListener {
                 onClick.invoke(user)
-                favoriteClick.invoke(user)
+                //favoriteClick.invoke(user)
             }
         }
     }
 
     private var onClick: (user: User) -> Unit = {}
-    fun setOnItemClickListener(onClick: (user: User) -> Unit) {
+    fun setOnItemClickListener( onClick: ( user: User ) -> Unit) {
         this.onClick = onClick
     }
 
@@ -30,7 +30,7 @@ class MyAdapter : RecyclerView.Adapter<MyAdapter.ViewHolder>() {
         this.favoriteClick = onClick
     }
 
-    var models: List<User> = listOf()
+    var modelsSelected: List<User> = listOf()
         @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
@@ -43,8 +43,8 @@ class MyAdapter : RecyclerView.Adapter<MyAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.populateModel(models[position])
+        holder.populateModel(modelsSelected[position])
     }
 
-    override fun getItemCount() = models.size
+    override fun getItemCount() = modelsSelected.size
 }

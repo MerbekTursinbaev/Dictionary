@@ -8,5 +8,6 @@ data class User(
     @PrimaryKey
     var id: Int,
     var name: String,
-    var description: String
+    var description: String,
+    var isFavorite: Int?
 )

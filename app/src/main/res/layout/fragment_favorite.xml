@@ -3,12 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerSelectedView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Favorite Fragment"
-        android:textSize="40sp"
-        android:gravity="center"
-        />
-
+        android:layout_height="match_parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
