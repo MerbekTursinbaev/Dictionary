@@ -2,8 +2,6 @@ package com.example.myapplication.fragment
 
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
-import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -23,17 +21,14 @@ class DetailFragment: Fragment(R.layout.fragment_detail) {
     private val args: DetailFragmentArgs by navArgs()
     private lateinit var dao: MyDao
     private lateinit var user: User
-    private var menuItem: MenuItem? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
 
         dao = MyDatabase.getInstance(requireContext()).dictionaryDao()
-
-        description.text = args.description
-        // args.id
-        user = dao.getUserById( args.id )
+        user = dao.getUserById(args.itemId)
+        description.text = user.description
 
         back.setOnClickListener {
             requireActivity().onBackPressed()
@@ -47,6 +42,7 @@ class DetailFragment: Fragment(R.layout.fragment_detail) {
         }
     }
 
+
     private fun setFavorite() {
         if (user.isFavorite == 0) {
             user.isFavorite = 1
@@ -57,9 +53,9 @@ class DetailFragment: Fragment(R.layout.fragment_detail) {
 
     private fun setFavoriteIcon() {
         if (user.isFavorite == 1) {
-            menuItem?.setIcon(R.drawable.ic_baseline_bookmark_24)
+            isFavorite?.setImageResource(R.drawable.ic_baseline_bookmark_24)
         } else {
-            menuItem?.setIcon(R.drawable.ic_baseline_bookmark_border_24)
+            isFavorite?.setImageResource(R.drawable.ic_baseline_bookmark_border_24)
         }
     }
 }

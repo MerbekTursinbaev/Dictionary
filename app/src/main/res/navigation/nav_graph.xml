@@ -18,16 +18,24 @@
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.example.myapplication.fragment.FavoriteFragment"
-        android:label="FavoriteFragment" />
+        android:label="FavoriteFragment" >
+
+        <argument
+            android:name="itemId"
+            app:argType="integer" />
+    </fragment>
 
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.myapplication.fragment.DetailFragment"
         android:label="DetailFragment">
 
+        <action
+            android:id="@+id/action_detailFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
         <argument
-            android:name="description"
-            app:argType="string" />
+            android:name="itemId"
+            app:argType="integer" />
     </fragment>
 
 </navigation>

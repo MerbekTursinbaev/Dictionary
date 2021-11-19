@@ -17,6 +17,7 @@ abstract class MyDatabase : RoomDatabase() {
                     MyDatabase::class.java,"dictionary-database"
                 )
                     .createFromAsset("Dictionary.db")
+                    .allowMainThreadQueries()
                     .build()
             }
             return INSTANCE

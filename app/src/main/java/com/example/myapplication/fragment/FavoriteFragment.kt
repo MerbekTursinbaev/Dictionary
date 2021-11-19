@@ -17,7 +17,7 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dao = MyDatabase.getInstance(requireContext()).dictionaryDao()
-        adapter.modelsSelected = dao.getByIsFavorite(1)
+        adapter.modelsSelected = dao.getFavorites()
         recyclerSelectedView.adapter = adapter
     }
 }

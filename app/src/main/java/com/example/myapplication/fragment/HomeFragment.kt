@@ -5,6 +5,7 @@ import android.view.View
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
 import com.example.myapplication.IsSelectedAdapter
 import com.example.myapplication.MyAdapter
@@ -30,9 +31,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         dao = MyDatabase.getInstance(requireContext()).dictionaryDao()
         setData()
 
-        adapter.setOnItemClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(it.description,it.id)
-            navController.navigate(action
+        adapter.setOnItemClickListener { itemId ->
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(itemId)
+            navController.navigate(action)
         }
 
         searchView.addTextChangedListener {

@@ -15,14 +15,14 @@ class MyAdapter : RecyclerView.Adapter<MyAdapter.ViewHolder>() {
         fun populateModel(user: User) {
             itemView.tvName.text = user.name
             itemView.setOnClickListener {
-                onClick.invoke(user)
+                onClick.invoke(user.id)
                 favoriteClick.invoke(user)
             }
         }
     }
 
-    private var onClick: (user: User) -> Unit = {}
-    fun setOnItemClickListener(onClick: (user: User) -> Unit) {
+    private var onClick: (id: Int) -> Unit = {  }
+    fun setOnItemClickListener(onClick: (id: Int) -> Unit) {
         this.onClick = onClick
     }
 
